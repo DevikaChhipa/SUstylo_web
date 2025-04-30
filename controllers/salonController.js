@@ -262,7 +262,7 @@ exports.getAllSalons = async (req, res) => {
             query.status = status;
         }
 
-        const salons = await Salon.find(query);
+        const salons = await Salon.find(query).populate("salonowner");
 
         res.status(200).json({ count: salons.length, salons });
     } catch (error) {
